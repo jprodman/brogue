@@ -243,6 +243,9 @@ void nextKeyOrMouseEvent(rogueEvent *returnEvent, __unused boolean textInput, bo
             returnEvent->eventType = KEYSTROKE;
             returnEvent->param1 = [[theEvent charactersIgnoringModifiers] characterAtIndex:0];
             //printf("\nKey pressed: %i", returnEvent->param1);
+            if ([[theEvent characters] characterAtIndex:0] == NSBackTabCharacter) {
+                returnEvent->param1 = '\t';
+            }
             returnEvent->param2 = 0;
             returnEvent->controlKey = ([theEvent modifierFlags] & NSControlKeyMask ? 1 : 0);
             returnEvent->shiftKey = ([theEvent modifierFlags] & NSShiftKeyMask ? 1 : 0);

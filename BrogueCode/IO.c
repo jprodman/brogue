@@ -433,7 +433,7 @@ void mainInputLoop() {
 	item *theItem;
 	cellDisplayBuffer rbuf[COLS][ROWS];
 	
-	boolean canceled, targetConfirmed, tabKey, focusedOnMonster, focusedOnItem, focusedOnTerrain,
+	boolean canceled, targetConfirmed, tabKey, backTabKey, focusedOnMonster, focusedOnItem, focusedOnTerrain,
 	playingBack, doEvent, textDisplayed, cursorMode, justDisabledCursorMode;
 	
 	rogueEvent theEvent;
@@ -582,7 +582,7 @@ void mainInputLoop() {
 			
 			// Get the input!
 			rogue.playbackMode = playingBack;
-			doEvent = moveCursor(&targetConfirmed, &canceled, &tabKey, cursor, &theEvent, &state, !textDisplayed, cursorMode, true);
+			doEvent = moveCursor(&targetConfirmed, &canceled, &tabKey, &backTabKey, cursor, &theEvent, &state, !textDisplayed, cursorMode, true);
 			rogue.playbackMode = false;
 			
 			if (state.buttonChosen == 3) { // Actions menu button.
@@ -629,8 +629,8 @@ void mainInputLoop() {
 				rogue.playbackMode = false;
 			}
             
-			if (tabKey && !playingBack) { // The tab key cycles the cursor through monsters, items and terrain features.
-				if (nextTargetAfter(&newX, &newY, cursor[0], cursor[1], true, true, true, true, false)) {
+			if ((tabKey || backTabKey) && !playingBack) { // The tab key cycles the cursor through monsters, items and terrain features.
+				if (nextTargetAfter(&newX, &newY, cursor[0], cursor[1], true, true, true, true, false, backTabKey)) {
                     cursor[0] = newX;
                     cursor[1] = newY;
                 }

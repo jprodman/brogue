@@ -1044,6 +1044,7 @@ enum tileFlags {
 #define ENTER_KEY			'\012'
 #define DELETE_KEY			'\177'
 #define TAB_KEY				'\t'
+#define BACKTICK_KEY        '`'
 #define PERIOD_KEY			'.'
 #define VIEW_RECORDING_KEY	'V'
 #define LOAD_SAVED_GAME_KEY	'O'
@@ -2719,10 +2720,12 @@ extern "C" {
                             boolean targetAllies,
                             boolean targetItems,
                             boolean targetTerrain,
-                            boolean requireOpenPath);
+                            boolean requireOpenPath,
+                            boolean previousTarget);
 	boolean moveCursor(boolean *targetConfirmed,
 					   boolean *canceled,
 					   boolean *tabKey,
+                       boolean *reverseTabKey,
 					   short targetLoc[2],
 					   rogueEvent *event,
 					   buttonState *state,
