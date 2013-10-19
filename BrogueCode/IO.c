@@ -3254,7 +3254,7 @@ void refreshSideBar(short focusX, short focusY, boolean focusedEntityMustGoFirst
                                       (focusEntity && (x != focusX || y != focusY)),
                                       (x == focusX && y == focusY));
         }
-		if (focusEntity && (x == focusX && y == focusY) && printY < ROWS) {
+		if (focusEntity && (x == focusX && y == focusY) && printY < ROWS - 1) {
 			gotFocusedEntityOnScreen = true;
 		}
 		for (j=oldPrintY; j<printY; j++) {
