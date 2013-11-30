@@ -1586,7 +1586,7 @@ void populateCreatureCostMap(short **costMap, creature *monst) {
 	}
 }
 
-#define exploreGoalValue(x, y)	(0 - abs((x) - DCOLS / 2) / 3 - abs((x) - DCOLS / 2) / 4)
+#define exploreGoalValue(x, y)	(0 - abs((x) - DCOLS / 2) / 2 - abs((y) - DROWS / 2) / 4)
 
 void getExploreMap(short **map, boolean headingToStairs) {// calculate explore map
 	short i, j;
