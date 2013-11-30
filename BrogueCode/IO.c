@@ -4191,7 +4191,12 @@ short printItemInfo(item *theItem, short y, boolean dim, boolean highlight) {
 			applyColorAverage(&itemBackColor, &black, 50);
 		}
 		plotCharWithColor(itemChar, 0, y, &itemForeColor, &itemBackColor);
-		printString(":                  ", 1, y, (dim ? &gray : &white), &black, 0);
+        if (theItem->flags & ITEM_PLAYER_AVOIDS) {
+            plotCharWithColor(':', 1, y, (dim ? &gray : &white), &darkRed);
+        } else {
+            plotCharWithColor(':', 1, y, (dim ? &gray : &white), &black);
+        }
+		printString("                  ", 2, y, (dim ? &gray : &white), &black, 0);
 		if (rogue.playbackOmniscience || !player.status[STATUS_HALLUCINATING]) {
 			itemName(theItem, name, true, true, (dim ? &gray : &white));
 		} else {

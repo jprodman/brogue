@@ -1035,6 +1035,7 @@ enum tileFlags {
 #define MESSAGE_ARCHIVE_KEY	'M'
 #define HELP_KEY			'?'
 #define DISCOVERIES_KEY		'D'
+#define TOGGLE_AVOID_ITEM_KEY 'v'
 #define EXPLORE_KEY			'x'
 #define AUTOPLAY_KEY		'A'
 #define SEED_KEY			'~'
@@ -2760,6 +2761,7 @@ extern "C" {
 	item *keyOnTileAt(short x, short y);
 	void unequip(item *theItem);
 	void drop(item *theItem);
+    boolean toggleAvoidItemAtLocation(short *location);
 	void findAlternativeHomeFor(creature *monst, short *x, short *y, boolean chooseRandomly);
 	boolean getQualifyingLocNear(short loc[2],
 								 short x, short y,

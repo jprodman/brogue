@@ -4682,6 +4682,9 @@ boolean moveCursor(boolean *targetConfirmed,
 					}
 					cursorMovementCommand = movementKeystroke = keysMoveCursor;
 					break;
+                case TOGGLE_AVOID_ITEM_KEY:
+                    toggleAvoidItemAtLocation(cursor);
+                    break;
 				case TAB_KEY:
 				case NUMPAD_0:
                     if (theEvent.shiftKey) {
@@ -6492,6 +6495,16 @@ item *dropItem(item *theItem) {
 		placeItem(theItem, player.xLoc, player.yLoc);
 		return theItem;
 	}
+}
+
+boolean toggleAvoidItemAtLocation(short *location) {
+	item *theItem;
+    theItem = itemAtLoc(location[0], location[1]);
+    if (theItem) {
+        theItem->flags ^= ITEM_PLAYER_AVOIDS;
+        return true;
+    }
+    return false;
 }
 
 void recalculateEquipmentBonuses() {
