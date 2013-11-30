@@ -4682,6 +4682,20 @@ boolean moveCursor(boolean *targetConfirmed,
 					}
 					cursorMovementCommand = movementKeystroke = keysMoveCursor;
 					break;
+                case PICK_TARGET_KEY:
+                    if (pickExploreTarget(cursor)) {
+                        cursorMovementCommand = movementKeystroke = keysMoveCursor;
+                    } else {
+                        *canceled = true;
+                    }
+                    break;
+                case SHORTEN_PATH_KEY:
+                    if (shortenPath(cursor)) {
+                        cursorMovementCommand = movementKeystroke = keysMoveCursor;
+                    } else {
+                        *canceled = true;
+                    }
+                    break;
                 case TOGGLE_AVOID_ITEM_KEY:
                     toggleAvoidItemAtLocation(cursor);
                     break;

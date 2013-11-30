@@ -1035,6 +1035,8 @@ enum tileFlags {
 #define MESSAGE_ARCHIVE_KEY	'M'
 #define HELP_KEY			'?'
 #define DISCOVERIES_KEY		'D'
+#define PICK_TARGET_KEY     'w'
+#define SHORTEN_PATH_KEY    ','
 #define TOGGLE_AVOID_ITEM_KEY 'v'
 #define EXPLORE_KEY			'x'
 #define AUTOPLAY_KEY		'A'
@@ -2578,6 +2580,9 @@ extern "C" {
     void populateGenericCostMap(short **costMap);
 	void populateCreatureCostMap(short **costMap, creature *monst);
 	void getExploreMap(short **map, boolean headingToStairs);
+    boolean pickExploreTarget(short *target);
+    boolean adjacentToUnexplored(short i, short j);
+    boolean shortenPath(short* target);
 	boolean explore(short frameDelay);
 	void clearCursorPath();
 	void mainInputLoop();
