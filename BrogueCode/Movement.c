@@ -1780,6 +1780,11 @@ boolean pickExploreTarget(short *target) {
 	}
     }
 
+    if (target[0] == -1 && newX == -1) {
+        newX = rogue.downLoc[0];
+        newY = rogue.downLoc[1];
+    }
+
     if (newX != -1) {
         target[0] = newX;
         target[1] = newY;
